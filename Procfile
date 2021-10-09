@@ -1,1 +1,1 @@
-web: zenmoney
+web: server
