@@ -18,6 +18,11 @@ func main() {
 	router.Use(gin.Recovery(), gin.Logger(), middleware.AuthorizationHook())
 
 	router.GET("/health", health.HealthCheck)
+	router.GET("/test", func(ctx *gin.Context) {
+		ctx.JSON(200,  gin.H{
+			"consent_handle": "abcd",
+		})
+	})
 	router.GET("/dashboard", dashboard.DashboardData)
 	router.POST("/Consent/Create", consent.Create)
 	router.GET("/Consent/Redirect", redirect.Redirect)
