@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"amit.vickey/ZenMoney/common"
 	"amit.vickey/ZenMoney/dashboard"
@@ -34,5 +35,9 @@ func main() {
 
 	common.InitLogger()
 
-	router.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port if not specified
+	}
+	router.Run(":" + port)
 }
